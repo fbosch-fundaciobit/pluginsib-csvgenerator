@@ -9,6 +9,7 @@ import org.fundaciobit.plugins.utils.AbstractPluginProperties;
 
 import es.caib.arxiudigital.apirest.ApiArchivoDigital;
 import es.caib.arxiudigital.apirest.facade.pojos.CabeceraPeticion;
+import es.caib.arxiudigital.apirest.facade.resultados.Resultado;
 
 /**
  * 
@@ -84,13 +85,13 @@ public class ArxiuCAIBCSVGeneratorPlugin extends AbstractPluginProperties implem
 
     apiArxiu.setTrazas(false);
 
-    String csv = apiArxiu.generarCSV();
+      Resultado<String> csv = apiArxiu.generarCSV();
 
     if (log.isDebugEnabled()) {
-      log.debug(" CSV: " + csv);
+      log.debug(" CSV: " + csv.getElementoDevuelto());
     }
 
-    return csv;
+    return csv.getElementoDevuelto();
 
   }
 
